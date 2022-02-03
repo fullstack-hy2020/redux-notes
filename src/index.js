@@ -1,15 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { createStore } from 'redux'
-//import App from './App';
-
-const noteReducer = (state = [], action) => {
-  if (action.type === 'NEW_NOTE') {
-    return state.concat(action.data)
-  }
-
-  return state
-}
+import { Provider } from 'react-redux'
+import App from './App'
+import noteReducer from './reducers/noteReducer'
 
 const store = createStore(noteReducer)
 
@@ -31,21 +25,9 @@ store.dispatch({
   }
 })
 
-const App = () => {
-  return(
-    <div>
-      <ul>
-        {store.getState().map(note=>
-          <li key={note.id}>
-            {note.content} <strong>{note.important ? 'important' : ''}</strong>
-          </li>
-        )}
-        </ul>
-    </div>
-  )
-}
-
 ReactDOM.render(
-    <App />,
+  <Provider store={store}>
+    <App />
+  </Provider>,
   document.getElementById('root')
 )
