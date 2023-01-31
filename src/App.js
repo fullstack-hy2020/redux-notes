@@ -15,7 +15,7 @@ const App = () => {
     <div>
       <NewNote />
       <VisibilityFilter />
-      <Notes  />
+      <Notes />
     </div>
   )
 }
