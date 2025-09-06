@@ -17,13 +17,13 @@ const Notes = () => {
       return notes
     }
     return filter === 'IMPORTANT'
-      ? notes.filter(note => note.important)
-      : notes.filter(note => !note.important)
+      ? notes.filter((note) => note.important)
+      : notes.filter((note) => !note.important)
   })
 
   return (
     <ul>
-      {notes.map(note => (
+      {notes.map((note) => (
         <Note
           key={note.id}
           note={note}
