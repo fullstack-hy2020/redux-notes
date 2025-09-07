@@ -23,17 +23,19 @@ const noteSlice = createSlice({
   },
 })
 
+const { createNote, setNotes } = noteSlice.actions
+
 export const initializeNotes = () => {
   return async (dispatch) => {
     const notes = await noteService.getAll()
-    dispatch(noteSlice.actions.setNotes(notes))
+    dispatch(setNotes(notes))
   }
 }
 
 export const appendNote = (content) => {
   return async (dispatch) => {
     const newNote = await noteService.createNew(content)
-    dispatch(noteSlice.actions.createNote(newNote))
+    dispatch(createNote(newNote))
   }
 }
 
